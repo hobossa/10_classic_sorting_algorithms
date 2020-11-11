@@ -13,7 +13,7 @@ class QuickSort {
     static int partition(int[] arr, int low, int high) {
         int p = low;
         int index = low + 1;
-        for (int i = low + 1; i < high; ++i) {
+        for (int i = index; i < high; ++i) {
             if (arr[i] < arr[p]) {
                 swap(arr, index, i);
                 ++index;
