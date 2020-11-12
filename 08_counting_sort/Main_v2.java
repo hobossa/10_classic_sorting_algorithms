@@ -4,25 +4,18 @@ import java.util.Arrays;
 
 class CountingSort {
 
-    static void swap(int[] arr, int a, int b) {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
-    }
-
-
     public static int[] sort(int[] sourceArray) {
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
         int n = arr.length;
         if (n > 0) {
             int min = arr[0];
             int max = arr[0];
-            for (int i = 0; i < n; ++i) {
-                if (arr[i] > max) {
-                    max = arr[i];
+            for (int k : arr) {
+                if (k > max) {
+                    max = k;
                 }
-                if (arr[i] < min) {
-                    min = arr[i];
+                if (k < min) {
+                    min = k;
                 }
             }
 
@@ -33,8 +26,8 @@ class CountingSort {
                 count[i] = 0;
             }
 
-            for (int i = 0; i < n; ++i) {
-                count[arr[i] - min]++;
+            for (int j : arr) {
+                count[j - min]++;
             }
 
             for (int i = 1; i < number; ++i) {
@@ -48,9 +41,7 @@ class CountingSort {
                 --count[arr[i]-min];
             }
 
-            for (int i = 0; i < n; ++i) {
-                arr[i] = output[i];
-            }
+            System.arraycopy(output, 0, arr, 0, n);
 
         }
         return arr;
